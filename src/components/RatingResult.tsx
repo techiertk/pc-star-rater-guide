@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { PCRating } from '@/utils/ratingLogic';
-import { Cpu, Gpu, Memory, Star, ArrowUpRight } from 'lucide-react';
+import { Cpu, MonitorPlay, Layers, Star, ArrowUpRight } from 'lucide-react';
 import { Progress } from "@/components/ui/progress";
 
 interface RatingResultProps {
@@ -60,7 +60,7 @@ const RatingResult: React.FC<RatingResultProps> = ({ rating, onRateAgain }) => {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Gpu className="h-5 w-5 text-primary" />
+                <MonitorPlay className="h-5 w-5 text-primary" />
                 <span className="font-medium">GPU</span>
               </div>
               <span className="text-lg font-semibold">{rating.components[1].score.toFixed(1)}/10</span>
@@ -73,7 +73,7 @@ const RatingResult: React.FC<RatingResultProps> = ({ rating, onRateAgain }) => {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Memory className="h-5 w-5 text-primary" />
+                <Layers className="h-5 w-5 text-primary" />
                 <span className="font-medium">RAM</span>
               </div>
               <span className="text-lg font-semibold">{rating.components[2].score.toFixed(1)}/10</span>

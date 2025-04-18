@@ -1,11 +1,10 @@
-
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Cpu, Gpu, Memory } from 'lucide-react';
+import { Cpu, MonitorPlay, Layers } from 'lucide-react';
 import { ramSizes, ramTypes, cpuData, gpuData } from '@/lib/pcComponents';
 import { PCConfig } from '@/utils/ratingLogic';
 
@@ -21,7 +20,6 @@ const PCForm: React.FC<PCFormProps> = ({ onSubmit }) => {
   const [cpuSearch, setCpuSearch] = useState('');
   const [gpuSearch, setGpuSearch] = useState('');
   
-  // Filter CPU options based on search
   const filteredCPUs = useMemo(() => {
     if (!cpuSearch) return cpuData;
     return cpuData.filter(cpu => 
@@ -30,7 +28,6 @@ const PCForm: React.FC<PCFormProps> = ({ onSubmit }) => {
     );
   }, [cpuSearch]);
   
-  // Filter GPU options based on search
   const filteredGPUs = useMemo(() => {
     if (!gpuSearch) return gpuData;
     return gpuData.filter(gpu => 
@@ -48,7 +45,6 @@ const PCForm: React.FC<PCFormProps> = ({ onSubmit }) => {
         ramSize
       });
     } else {
-      // Show alert if any field is missing
       alert("Please fill all fields to rate your PC");
     }
   };
@@ -57,7 +53,6 @@ const PCForm: React.FC<PCFormProps> = ({ onSubmit }) => {
     <Card className="glass-card w-full max-w-2xl mx-auto">
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* CPU Section */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Cpu className="h-5 w-5 text-primary" />
@@ -85,10 +80,9 @@ const PCForm: React.FC<PCFormProps> = ({ onSubmit }) => {
             </div>
           </div>
           
-          {/* GPU Section */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Gpu className="h-5 w-5 text-primary" />
+              <MonitorPlay className="h-5 w-5 text-primary" />
               <Label htmlFor="gpu" className="text-lg font-medium">Graphics Card (GPU)</Label>
             </div>
             <div className="space-y-2">
@@ -113,10 +107,9 @@ const PCForm: React.FC<PCFormProps> = ({ onSubmit }) => {
             </div>
           </div>
           
-          {/* RAM Section */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Memory className="h-5 w-5 text-primary" />
+              <Layers className="h-5 w-5 text-primary" />
               <Label htmlFor="ram" className="text-lg font-medium">Memory (RAM)</Label>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
